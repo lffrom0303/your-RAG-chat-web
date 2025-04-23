@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
   // let lastMessage = messages[messages.length - 1];
   // let content = await getContent(lastMessage.content);
-  let content = mockContent;
+  const content = mockContent;
   const result = streamText({
     model: deepseek("deepseek-chat"),
     system: content,

@@ -8,9 +8,9 @@ export async function POST(req: Request) {
     const formData = await req.formData();
     const file = formData.get("file") as File;
     //1、pdf to docs
-    let docs = await pdfToDocs(file);
+    const docs = await pdfToDocs(file);
     //2、split docs
-    let chunks = await Promise.all(docs.map((doc) => splitDocs(doc)));
+    const chunks = await Promise.all(docs.map((doc) => splitDocs(doc)));
     //3、上传到vector store
     await Promise.all(chunks.map((chunk) => uploadToDb(chunk)));
     return NextResponse.json({
