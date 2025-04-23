@@ -1,7 +1,6 @@
 import { createDeepSeek } from "@ai-sdk/deepseek";
 import { streamText } from "ai";
 import { pc } from "@/lib/pinecone";
-import { content as mockContent } from "@/mock";
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 const deepseek = createDeepSeek({
@@ -9,9 +8,8 @@ const deepseek = createDeepSeek({
 });
 export async function POST(req: Request) {
   const { messages } = await req.json();
-  // let lastMessage = messages[messages.length - 1];
-  // let content = await getContent(lastMessage.content);
-  const content = mockContent;
+  const lastMessage = messages[messages.length - 1];
+  const content = await getContent(lastMessage.content);
   const result = streamText({
     model: deepseek("deepseek-chat"),
     system: content,

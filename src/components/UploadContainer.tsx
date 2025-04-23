@@ -24,9 +24,9 @@ export default function UploadContainer() {
 
   return (
     <div className="nes-container -mr-0.5 h-full w-full flex flex-col items-center text-center font-(family-name:--font-hmkj)">
-      <label className="nes-btn">
-        <span>点击上传文件到此</span>
-        <input {...getInputProps()} />
+      <label className="nes-btn is-disabled">
+        <span>点击上传文件</span>
+        {/*<input {...getInputProps()} />*/}
       </label>
     </div>
   );
