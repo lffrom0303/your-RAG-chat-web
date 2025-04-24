@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "nes.css/css/nes.css";
 
+::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+}
 .text-loading:after{
     content: "";
     animation: text-loading 1s infinite;
